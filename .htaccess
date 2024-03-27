@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteBase /web-backend/controle-estacionamento-api/
+
+# Verifica se a solicitação não está na pasta "public"
+RewriteCond %{REQUEST_URI} !^/web-backend/controle-estacionamento-api/public/
+
+# Se não estiver na pasta "public", redirecione para a pasta "public"
+RewriteRule ^(.*)$ /web-backend/controle-estacionamento-api/public/$1 [L]
+
+# Redireciona solicitações diretas para a pasta "public" de volta para a raiz
+RewriteCond %{THE_REQUEST} \s/web-backend/controle-estacionamento-api/public/ [NC]
+RewriteRule ^ /web-backend/controle-estacionamento-api/ [L,R=301]
+
+
